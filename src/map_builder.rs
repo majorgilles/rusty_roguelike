@@ -36,8 +36,8 @@ impl MapBuilder {
                         self.map.tiles[idx] = TileType::Floor;
                     }
                 });
+                self.rooms.push(room);
             }
-            self.rooms.push(room)
         }
     }
 
@@ -61,7 +61,7 @@ impl MapBuilder {
 
     fn build_corridors(&mut self, rng: &mut RandomNumberGenerator) {
         let mut rooms = self.rooms.clone();
-        rooms.sort_by(|a, b| a.center().x.cmp(&b.center().x));
+        rooms.sort_by_key(|a| a.center().x);
 
         for (i, room) in rooms.iter().enumerate().skip(1) {
             let prev = rooms[i - 1].center();
