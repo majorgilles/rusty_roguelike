@@ -10,6 +10,7 @@ impl Player {
     }
 
     pub fn render(&self, ctx: &mut BTerm, camera: &Camera) {
+        ctx.set_active_console(1);
         ctx.set(
             self.position.x - camera.left_x, // translate World x to screen x
             self.position.y - camera.top_y,  // translate World y to screen y
