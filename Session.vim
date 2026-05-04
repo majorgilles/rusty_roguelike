@@ -10,11 +10,16 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 let s:shortmess_save = &shortmess
 set shortmess+=aoO
-badd +5 C:/dev/hands_on_rust/rusty_roguelike/src/systems/player_inputs.rs
+badd +6 C:/dev/hands_on_rust/rusty_roguelike/src/systems/player_inputs.rs
+badd +52 c:/dev/hands_on_rust/rusty_roguelike/src/main.rs
+badd +2 C:/dev/hands_on_rust/rusty_roguelike/src/systems/mod.rs
+badd +1 C:/dev/hands_on_rust/rusty_roguelike/src/components.rs
+badd +1 C:/dev/hands_on_rust/rusty_roguelike/src/spawner.rs
+badd +20 C:/dev/hands_on_rust/rusty_roguelike/src/systems/map_render.rs
 argglobal
 %argdel
 $argadd .
-edit C:/dev/hands_on_rust/rusty_roguelike/src/systems/player_inputs.rs
+edit C:/dev/hands_on_rust/rusty_roguelike/src/systems/map_render.rs
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -28,20 +33,29 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
+balt C:/dev/hands_on_rust/rusty_roguelike/src/systems/mod.rs
 setlocal foldmethod=expr
-setlocal foldexpr=v:lua.vim.lsp.foldexpr()
+setlocal foldexpr=v:lua.LazyVim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
 setlocal foldignore=#
 setlocal foldlevel=99
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
-let s:l = 5 - ((4 * winheight(0) + 18) / 37)
+6
+sil! normal! zo
+9
+sil! normal! zo
+10
+sil! normal! zo
+13
+sil! normal! zo
+let s:l = 20 - ((19 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 5
-normal! 025|
+keepjumps 20
+normal! 032|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
