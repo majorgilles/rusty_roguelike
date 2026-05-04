@@ -14,6 +14,7 @@ pub fn map_render(#[resource] map: &Map, #[resource] camera: &Camera) {
                     TileType::Floor => to_cp437('.'),
                     TileType::Wall => to_cp437('#'),
                 };
+                // Give the instruction to display in screen coordinates (pt - offset)
                 draw_batch.set(pt - offset, ColorPair::new(WHITE, BLACK), glyph);
             }
         }
