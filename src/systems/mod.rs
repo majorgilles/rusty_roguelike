@@ -1,5 +1,5 @@
 use crate::prelude::*;
-mod collisions;
+mod combat;
 mod end_turn;
 mod entity_render;
 mod hud;
@@ -24,12 +24,12 @@ pub fn build_player_scheduler() -> Schedule {
     Schedule::builder()
         .add_system(movement::movement_system())
         .flush()
-        .add_system(collisions::collisions_system())
         .flush()
         .add_system(map_render::map_render_system())
         .add_system(entity_render::entity_render_system())
         .add_system(hud::hud_system())
         .add_system(tooltip::tooltips_system())
+        .add_system(combat::combat_system())
         .add_system(end_turn::end_turn_system())
         .build()
 }
@@ -40,7 +40,6 @@ pub fn build_monster_scheduler() -> Schedule {
         .flush()
         .add_system(movement::movement_system())
         .flush()
-        .add_system(collisions::collisions_system())
         .add_system(map_render::map_render_system())
         .add_system(entity_render::entity_render_system())
         .add_system(hud::hud_system())
