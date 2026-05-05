@@ -1,5 +1,4 @@
-use crate::{components, prelude::*};
-use std::arch::x86_64::_tzcnt_u16;
+use crate::prelude::*;
 
 #[system]
 #[write_component(Point)]
